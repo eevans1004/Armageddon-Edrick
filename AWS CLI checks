@@ -1,0 +1,341 @@
+AWS CLI checks:
+
+List all security groups in a region
+
+~ $ 
+~ $ aws ec2 describe-security-groups \
+>   --region us-east-1 \
+>   --query "SecurityGroups[].{GroupId:GroupId,Name:GroupName,VpcId:VpcId}" \
+>   --output table
+~ $ 
+~ $ aws ec2 describe-security-groups \
+>   --region us-east-1 \
+>   --query "SecurityGroups[].{GroupId:GroupId,Name:GroupName,VpcId:VpcId}" \
+>   --output table
+------------------------------------------------------------------------
+|                        DescribeSecurityGroups                        |
++----------------------+---------------------+-------------------------+
+|        GroupId       |        Name         |          VpcId          |
++----------------------+---------------------+-------------------------+
+|  sg-0cab3640d4778a47a|  default            |  vpc-0c0fd659aab889b48  |
+|  sg-0a7dc09feb4ab2a8e|  basic-linux        |  vpc-0206eae750a2fe6a6  |
+|  sg-09d998cbb03da1473|  ec2-rds-3          |  vpc-0206eae750a2fe6a6  |
+|  sg-0e88f11758f214383|  ec2-rds-1          |  vpc-0206eae750a2fe6a6  |
+|  sg-0cbb3831946c8c658|  rds-ec2-3          |  vpc-0206eae750a2fe6a6  |
+|  sg-00bf744e71322a7c6|  default            |  vpc-0a832e57ff00766e3  |
+|  sg-0a60b507cb59e69a8|  default            |  vpc-0206eae750a2fe6a6  |
+|  sg-0a16614c351933b44|  SG-Ipanema         |  vpc-00fa0f959dc000487  |
+|  sg-0eb57321e9be11eb1|  vpc-sg-122825      |  vpc-0c0fd659aab889b48  |
+|  sg-08bd4af37ba7b762e|  allow_http         |  vpc-0a832e57ff00766e3  |
+|  sg-06727dd92170ba8e9|  SG-rds-lab         |  vpc-0206eae750a2fe6a6  |
+|  sg-06dd9bf8586bf185d|  allow_ssh          |  vpc-0a832e57ff00766e3  |
+|  sg-04d9134805c0d67e1|  Ipanema-B-SG       |  vpc-0c0fd659aab889b48  |
+:...skipping...
+------------------------------------------------------------------------
+|                        DescribeSecurityGroups                        |
++----------------------+---------------------+-------------------------+
+|        GroupId       |        Name         |          VpcId          |
++----------------------+---------------------+-------------------------+
+|  sg-0cab3640d4778a47a|  default            |  vpc-0c0fd659aab889b48  |
+|  sg-0a7dc09feb4ab2a8e|  basic-linux        |  vpc-0206eae750a2fe6a6  |
+|  sg-09d998cbb03da1473|  ec2-rds-3          |  vpc-0206eae750a2fe6a6  |
+|  sg-0e88f11758f214383|  ec2-rds-1          |  vpc-0206eae750a2fe6a6  |
+|  sg-0cbb3831946c8c658|  rds-ec2-3          |  vpc-0206eae750a2fe6a6  |
+|  sg-00bf744e71322a7c6|  default            |  vpc-0a832e57ff00766e3  |
+|  sg-0a60b507cb59e69a8|  default            |  vpc-0206eae750a2fe6a6  |
+|  sg-0a16614c351933b44|  SG-Ipanema         |  vpc-00fa0f959dc000487  |
+|  sg-0eb57321e9be11eb1|  vpc-sg-122825      |  vpc-0c0fd659aab889b48  |
+|  sg-08bd4af37ba7b762e|  allow_http         |  vpc-0a832e57ff00766e3  |
+|  sg-06727dd92170ba8e9|  SG-rds-lab         |  vpc-0206eae750a2fe6a6  |
+|  sg-06dd9bf8586bf185d|  allow_ssh          |  vpc-0a832e57ff00766e3  |
+|  sg-04d9134805c0d67e1|  Ipanema-B-SG       |  vpc-0c0fd659aab889b48  |
+|  sg-0b6ebb997122fc47a|  lab-ec2-SG         |  vpc-0206eae750a2fe6a6  |
+|  sg-0cc188c70522c49b9|  rds-lab-sg         |  vpc-0206eae750a2fe6a6  |
+|  sg-0311cf64e2df95093|  default            |  vpc-00fa0f959dc000487  |
+|  sg-0d4e616cc408eec67|  rds-ec2-1          |  vpc-0206eae750a2fe6a6  |
+|  sg-04838a611d3119153|  rds-ec2-2          |  vpc-0206eae750a2fe6a6  |
+|  sg-05cb45553aeb527db|  sshandhomepage     |  vpc-0206eae750a2fe6a6  |
+|  sg-0ef4bcfdf1b83066a|  ping               |  vpc-0a832e57ff00766e3  |
+|  sg-03c632342639749d6|  armageddon-lab-SG  |  vpc-0206eae750a2fe6a6  |
+|  sg-07681700d91b1dfc9|  ipanema-sg-vpc     |  vpc-0c0fd659aab889b48  |
+|  sg-02ba368af3e41783c|  ec2-rds-2          |  vpc-0206eae750a2fe6a6  |
+:...skipping...
+------------------------------------------------------------------------
+|                        DescribeSecurityGroups                        |
++----------------------+---------------------+-------------------------+
+|        GroupId       |        Name         |          VpcId          |
++----------------------+---------------------+-------------------------+
+|  sg-0cab3640d4778a47a|  default            |  vpc-0c0fd659aab889b48  |
+|  sg-0a7dc09feb4ab2a8e|  basic-linux        |  vpc-0206eae750a2fe6a6  |
+|  sg-09d998cbb03da1473|  ec2-rds-3          |  vpc-0206eae750a2fe6a6  |
+|  sg-0e88f11758f214383|  ec2-rds-1          |  vpc-0206eae750a2fe6a6  |
+|  sg-0cbb3831946c8c658|  rds-ec2-3          |  vpc-0206eae750a2fe6a6  |
+|  sg-00bf744e71322a7c6|  default            |  vpc-0a832e57ff00766e3  |
+|  sg-0a60b507cb59e69a8|  default            |  vpc-0206eae750a2fe6a6  |
+|  sg-0a16614c351933b44|  SG-Ipanema         |  vpc-00fa0f959dc000487  |
+|  sg-0eb57321e9be11eb1|  vpc-sg-122825      |  vpc-0c0fd659aab889b48  |
+|  sg-08bd4af37ba7b762e|  allow_http         |  vpc-0a832e57ff00766e3  |
+|  sg-06727dd92170ba8e9|  SG-rds-lab         |  vpc-0206eae750a2fe6a6  |
+|  sg-06dd9bf8586bf185d|  allow_ssh          |  vpc-0a832e57ff00766e3  |
+|  sg-04d9134805c0d67e1|  Ipanema-B-SG       |  vpc-0c0fd659aab889b48  |
+|  sg-0b6ebb997122fc47a|  lab-ec2-SG         |  vpc-0206eae750a2fe6a6  |
+|  sg-0cc188c70522c49b9|  rds-lab-sg         |  vpc-0206eae750a2fe6a6  |
+|  sg-0311cf64e2df95093|  default            |  vpc-00fa0f959dc000487  |
+|  sg-0d4e616cc408eec67|  rds-ec2-1          |  vpc-0206eae750a2fe6a6  |
+|  sg-04838a611d3119153|  rds-ec2-2          |  vpc-0206eae750a2fe6a6  |
+|  sg-05cb45553aeb527db|  sshandhomepage     |  vpc-0206eae750a2fe6a6  |
+|  sg-0ef4bcfdf1b83066a|  ping               |  vpc-0a832e57ff00766e3  |
+|  sg-03c632342639749d6|  armageddon-lab-SG  |  vpc-0206eae750a2fe6a6  |
+|  sg-07681700d91b1dfc9|  ipanema-sg-vpc     |  vpc-0c0fd659aab889b48  |
+|  sg-02ba368af3e41783c|  ec2-rds-2          |  vpc-0206eae750a2fe6a6  |
++----------------------+---------------------+-------------------------+
+~
+~
+(END)
+
+Inspect a specific security group (inbound & outbound rules)
+Inspect a specific security group (inbound & outbound rules)
+~ $ aws ec2 describe-security-groups \
+>   --group-ids sg-0b6ebb997122fc47a \
+>   --region us-east-1 \
+>   --output json
+{
+    "SecurityGroups": [
+        {
+            "GroupId": "sg-0b6ebb997122fc47a",
+            "IpPermissionsEgress": [
+                {
+                    "IpProtocol": "-1",
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+                        }
+                    ],
+                    "Ipv6Ranges": [],
+                    "PrefixListIds": []
+                }
+            ],
+            "VpcId": "vpc-0206eae750a2fe6a6",
+            "SecurityGroupArn": "arn:aws:ec2:us-east-1:537669392278:security-group/sg-0b6ebb997122fc47a",
+            "OwnerId": "537669392278",
+            "GroupName": "lab-ec2-SG",
+            "Description": "lab ec2 security group",
+            "IpPermissions": [
+                {
+                    "IpProtocol": "tcp",
+                    "FromPort": 80,
+                    "ToPort": 80,
+                    "UserIdGroupPairs": [],
+                    "IpRanges": [
+                        {
+                            "CidrIp": "0.0.0.0/0"
+:
+
+
+Verify which resources are using the security group EC2 instances:
+
+~ $ aws ec2 describe-instances \
+>   --filters Name=instance.group-id,Values=sg-0b6ebb997122fc47a \
+>   --region us-east-1 \
+>   --query "Reservations[].Instances[].InstanceId" \
+>   --output table
+-------------------------
+|   DescribeInstances   |
++-----------------------+
+|  i-08933b381dfc57520  |
++-----------------------+
+~ $
+
+List all RDS instances
+~ $ aws rds describe-db-instances \
+>   --region us-east-1 \
+>   --query "DBInstances[].{DB:DBInstanceIdentifier,Engine:Engine,Public:PubliclyAccessible,Vpc:DBSubnetGroup.VpcId}" \
+>   --output table
+--------------------------------------------------------------
+|                     DescribeDBInstances                    |
++--------------+---------+---------+-------------------------+
+|      DB      | Engine  | Public  |           Vpc           |
++--------------+---------+---------+-------------------------+
+|  lab-mysql-1 |  mysql  |  False  |  vpc-0206eae750a2fe6a6  |
++--------------+---------+---------+-------------------------+
+Inspect a specific RDS instance
+
+ ~ $ aws rds describe-db-instances \
+>   --db-instance-identifier  lab-mysql-1\
+>   --region us-east-1 \
+>   --query "DBInstances[].VpcSecurityGroups[].VpcSecurityGroupId" \
+>   --output table
+--------------------------
+|   DescribeDBInstances  |
++------------------------+
+|  sg-06727dd92170ba8e9  |
+|  sg-0cbb3831946c8c658  |
++------------------------+
+
+Verify RDS security groups explicitly
+~ $ aws rds describe-db-instances \
+>   --db-instance-identifier lab-mysql-1 \
+>   --region us-east-1 \
+>   --query "DBInstances[].VpcSecurityGroups[].VpcSecurityGroupId" \
+>   --output table
+--------------------------
+|   DescribeDBInstances  |
++------------------------+
+|  sg-06727dd92170ba8e9  |
+|  sg-0cbb3831946c8c658  |
++------------------------+
+~ $
+Verity RDS subnet placement
+aws rds describe-db-subnet-groups \
+  --region us-east-1 \
+  --query "DBSubnetGroups[].{Name:DBSubnetGroupName,Vpc:VpcId,Subnets:Subnets[].SubnetIdentifier}" \
+  --output table
+
+~ $ aws rds describe-db-subnet-groups \
+>   --region us-east-1 \
+>   --query "DBSubnetGroups[].{Name:DBSubnetGroupName,Vpc:VpcId,Subnets:Subnets[].SubnetIdentifier}" \
+>   --output table
+------------------------------------------------------------
+|                  DescribeDBSubnetGroups                  |
++--------------------------------+-------------------------+
+|              Name              |           Vpc           |
++--------------------------------+-------------------------+
+|  default-vpc-0206eae750a2fe6a6 |  vpc-0206eae750a2fe6a6  |
++--------------------------------+-------------------------+
+||                         Subnets                        ||
+|+--------------------------------------------------------+|
+||  subnet-057d79e6619fccf13                              ||
+||  subnet-018ab067191bf687c                              ||
+||  subnet-0e7adffa57299efd3                              ||
+||  subnet-0386a6c3e28cad9ae                              ||
+||  subnet-0ff8e242b921f7362                              ||
+|+--------------------------------------------------------+|
+
+Verify Network Exposure (Fast Sanity Checks) Check if RDS is publicly reachable (quick flag)
+~ $ aws rds describe-db-instances \
+>   --db-instance-identifier lab-mysql-1 \
+>   --region us-east-1 \
+>   --query "DBInstances[].PubliclyAccessible" \
+>   --output text
+False
+
+Part 2 — Launch EC2
+1.	EC2 Console → Launch instance
+2.	Name: lab-ec2-app
+3.	AMI: Amazon Linux 2023
+4.	Instance type: t3.micro (or t2.micro)
+5.	Key pair: choose/create (only if you want SSH access)
+6.	Network: same VPC as RDS
+7.	Security group: create sg-ec
+ Security group for EC2 (sg-ec2-lab) Inbound HTTP TCP 80 from 0.0.0.0/0 (so they can test in browser) (Optional) SSH TCP 22 from your IP only
+Outbound allow-all (default)
+Now go back to RDS SG inbound rule Set Source = sg-ec2-lab for TCP 3306.
+ 
+
+Part 3 — Store DB creds (Secrets Manager)
+1.	Secrets Manager → Store a new secret
+2.	Secret type: Credentials for RDS database
+3.	Username/password: admin + your password
+4.	Select your RDS instance lab-mysql
+5.	Secret name: lab/rds/mysql
+
+ 
+Verify Secrets Manager (Existence, Metadata, Access)
+ Describe a specific secret (NO value exposure)
+ 
+
+
+Create an IAM Role for EC2 to read the secret
+1.	IAM → Roles → Create role
+2.	Trusted entity: EC2
+3.	Add permission policy (tightest good enough for lab): SecretsManagerReadWrite is too broad (but easy). Better: create a small inline policy like below.
+Inline policy (recommended) Replace , <ACCOUNT_ID>, and secret name if different: #Check inline_policy.json in this folder
+ 
+
+
+Verify which IAM principals can access the secret
+ ~ $ aws secretsmanager get-resource-policy \
+>   --secret-id lab/rds/mysql \
+>   --region us-east-1 \
+>   --output json
+{
+    "ARN": "arn:aws:secretsmanager:us-east-1:537669392278:secret:lab/rds/mysql-KbuCSO",
+    "Name": "lab/rds/mysql"
+}
+Only expected roles are listed No wildcard principals No cross-account access unless justified
+Step 2: Check the IAM role attached to the instance aws ec2 describe-instances \
+  --instance-ids i-08933b381dfc57520 \
+  --region us-east-1 \
+  --query "Reservations[].Instances[].IamInstanceProfile.Arn" \
+  --output text
+ ~ $ aws ec2 describe-instances \
+>   --instance-ids i-08933b381dfc57520 \
+>   --region us-east-1 \
+>   --query "Reservations[].Instances[].IamInstanceProfile.Arn" \
+>   --output text
+arn:aws:iam::537669392278:instance-profile/armageddon-lab-iam-role
+~ $
+Step 3: Resolve instance profile → role name
+~ $ aws iam get-instance-profile \
+>   --instance-profile-name armageddon-lab-iam-role \
+>   --query "InstanceProfile.Roles[].RoleName" \
+>   --output text
+armageddon-lab-iam-role
+ 
+Verify IAM Role Permissions (Critical) List policies attached to the role
+aws iam list-attached-role-policies \
+  --role-name armageddon-lab-iam-role \
+  --output table
+~ $ aws iam list-attached-role-policies \
+>   --role-name armageddon-lab-iam-role \
+>   --output table
+----------------------------------------------------------------------------------
+|                            ListAttachedRolePolicies                            |
++--------------------------------------------------------------------------------+
+||                               AttachedPolicies                               ||
+|+--------------------------------------------------+---------------------------+|
+||                     PolicyArn                    |        PolicyName         ||
+|+--------------------------------------------------+---------------------------+|
+||  arn:aws:iam::aws:policy/SecretsManagerReadWrite |  SecretsManagerReadWrite  ||
+|+--------------------------------------------------+---------------------------+|
+ List inline polices (often forgotten)
+aws iam list-role-policies \
+  --role-name armageddon-lab-iam-role \
+  --output table
+
+~ $ aws iam list-role-policies \
+>   --role-name armageddon-lab-iam-role \
+>   --output table
+-----------------------------
+|     ListRolePolicies      |
++---------------------------+
+||       PolicyNames       ||
+|+-------------------------+|
+||  1a_inline_policy.json  ||
+|+-------------------------+|
+ 
+Inspect a specific managed policy
+aws iam get-policy-version \
+  --policy-arn arn:aws:iam::aws:policy/SecretsManagerReadWrite \
+  --version-id v1 \
+  --output json
+{
+    "PolicyVersion": {
+        "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Action": [
+                        "secretsmanager:*",
+                        "cloudformation:CreateChangeSet",
+                        "cloudformation:DescribeChangeSet",
+                        "cloudformation:DescribeStackResource",
+                        "cloudformation:DescribeStacks",
+                        "cloudformation:ExecuteChangeSet",
+                        "ec2:DescribeSecurityGroups",
+:
+ 
+
+
+
