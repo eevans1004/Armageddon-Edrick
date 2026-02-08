@@ -1,0 +1,21 @@
+Why is DB inbound source restricted to the EC2 security group?
+This ensures that database access is only granted to the specified EC2 instance
+
+What port does MySQL use?
+3306
+
+Why is Secrets Manager better than storing creds in code/user-data?
+Secrets stored in code (user data in this instance) will be shown in plain text which exposes the credentials. Anyone who gains access to the database or source code (git repo) would have access. AWS Secrets Manager provides encryption for secrets, secret rotation for automated security and runtime retrieval which allow the app to obtain the secret on when it is needed.
+
+Why each rule exists:
+
+What would break if removed?
+If the security groups were removed all traffic would be blocked due to default “implicit deny” policy.
+Why is broader access forbidden?
+This violates the security Principle of Least Privilege. You give only the minimum amount of access necessary. Giving more access than is needed increases attack exposure and potential damage should the resource be compromised.
+Why does this role exist? 
+Roles give an EC2 instance permission to retrieve specific secrets from the Secrets Manager. The user data code then uses the secret to authenticate with the RDS database.
+Why it can read this secret? 
+The secret is attached to this IAM role.
+Why can't it read other secrets?
+The other secrets are not attached to this IAM role.
